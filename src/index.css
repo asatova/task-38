@@ -25,7 +25,17 @@ label{
 .form-control{
   width: 50% !important;
   margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 .form-check .form-check-input{
   float: none!important;
+  margin-top: 12px;
+}
+.btn-primary{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.form-check-label{
+  margin-left: 12px;
 }
