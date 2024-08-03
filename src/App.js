@@ -14,23 +14,33 @@ class App extends Component {
         });
     };
 
-    validateInput = (e) => {
-        if (e.target.value.length < 4) {
-            alert("4 tadan kop harf kiriting");
-        }
-    };
-
     handleChecked = (e) => {
         this.setState({
             [e.target.name]: e.target.checked,
         });
     };
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { email, agreement } = this.state;
+
+        if (!email && !agreement) {
+            alert("Email and rules not valid");
+        } else if (email && !agreement) {
+            alert("Please, accept to our rules");
+        }else if (!email && agreement) {
+            alert("email not valid");
+
+        } else if (email && agreement) {
+            alert("Congratulations!");
+        }
+    };
+
     render() {
         const { email, agreement } = this.state;
         return (
             <div className="container">
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="email">Email</label>
                         <input
@@ -40,7 +50,6 @@ class App extends Component {
                             id="email"
                             value={email}
                             onChange={this.handleValue}
-                            onBlur={this.validateInput}
                         />
                     </div>
 
@@ -54,7 +63,7 @@ class App extends Component {
                             onChange={this.handleChecked}
                         />
                         <label className="form-check-label" htmlFor="agreement">
-                         Terms and Conditions
+                            Terms and Conditions
                         </label>
                     </div>
                     <div>
